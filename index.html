@@ -4,57 +4,311 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sameer Khan | IT Operations & Systems</title>
+  
+  <!-- Meta tag per anteprime social -->
+  <meta name="description" content="Portfolio di Sameer Khan - Aspirante Sistemista IT & IT Operations Specialist con focus su ServiceNow e Helpdesk.">
+  <meta property="og:title" content="Sameer Khan | IT Operations & Systems">
+  <meta property="og:description" content="Aspirante Sistemista IT & ServiceNow Enthusiast">
+  <meta property="og:type" content="website">
+
+  <!-- Font moderno Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #111827;
+      --card-border: #1f2937;
+      --card-hover: #1e293b;
+      --primary: #38bdf8;
+      --primary-dark: #0284c7;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent: #10b981;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0b0f19; color: #f1f5f9; line-height: 1.6; padding: 2rem 1rem; }
-    .container { max-width: 750px; margin: 0 auto; }
-    header { text-align: center; padding: 2.5rem 1rem; border-bottom: 1px solid #1e293b; margin-bottom: 2rem; }
-    h1 { font-size: 2.2rem; color: #38bdf8; margin-bottom: 0.5rem; }
-    .subtitle { color: #94a3b8; font-size: 1.05rem; }
-    .section-title { font-size: 1.3rem; margin: 2rem 0 1rem; color: #e2e8f0; border-left: 4px solid #0284c7; padding-left: 0.75rem; }
-    .card { background: #131d31; border: 1px solid #1e293b; border-radius: 10px; padding: 1.25rem; margin-bottom: 1rem; }
-    .card h3 { color: #7dd3fc; font-size: 1.1rem; margin-bottom: 0.35rem; }
-    .card p { color: #94a3b8; font-size: 0.95rem; }
-    .badge-container { margin-top: 0.75rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .badge { background: #0369a1; color: white; padding: 0.2rem 0.65rem; border-radius: 999px; font-size: 0.8rem; font-weight: 500; }
-    .status { display: inline-block; background: #064e3b; color: #34d399; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.75rem; margin-left: 0.5rem; }
-    footer { text-align: center; margin-top: 3rem; color: #64748b; font-size: 0.85rem; border-top: 1px solid #1e293b; padding-top: 1.5rem; }
-    a.btn { display: inline-block; margin-top: 0.75rem; color: #38bdf8; text-decoration: none; font-weight: 500; font-size: 0.9rem; }
-    a.btn:hover { text-decoration: underline; }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 3rem 1.25rem;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* Header & Profilo */
+    header {
+      text-align: center;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 2.5rem;
+    }
+
+    .avatar-placeholder {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 1.25rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-dark), #6366f1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin-bottom: 0.4rem;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      font-weight: 400;
+      max-width: 550px;
+      margin: 0 auto 1.25rem;
+    }
+
+    /* Badge & Tag */
+    .badge-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .badge {
+      background: rgba(2, 132, 199, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Bottoni Contatti / Social */
+    .links-container {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      background: #1f2937;
+      color: #e5e7eb;
+      text-decoration: none;
+      padding: 0.45rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid #374151;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #374151;
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--primary-dark);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #0369a1;
+    }
+
+    /* Sezioni */
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 2rem 0 1rem;
+      color: #f3f4f6;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 4px;
+      height: 1.1rem;
+      background: var(--primary);
+      border-radius: 2px;
+      display: inline-block;
+    }
+
+    /* Card Progetti */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.4rem;
+      margin-bottom: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: #374151;
+      background: var(--card-hover);
+      transform: translateY(-2px);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+    }
+
+    .card h3 {
+      color: #f9fafb;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .status-badge {
+      font-size: 0.75rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+
+    .status-active {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .status-upcoming {
+      background: rgba(148, 163, 184, 0.1);
+      color: #94a3b8;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tech-item {
+      font-size: 0.75rem;
+      color: #cbd5e1;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 3.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--card-border);
+      color: #6b7280;
+      font-size: 0.85rem;
+    }
   </style>
 </head>
 <body>
   <div class="container">
+    
     <header>
+      <div class="avatar-placeholder">SK</div>
       <h1>Sameer Khan</h1>
-      <p class="subtitle">Aspirante Sistemista IT & IT Operations | Focus su ServiceNow & Helpdesk</p>
-      <div class="badge-container" style="justify-content: center; margin-top: 1rem;">
+      <p class="subtitle">Aspirante Sistemista IT & IT Operations Specialist | Focus su ServiceNow & Helpdesk</p>
+      
+      <div class="badge-container">
         <span class="badge">ServiceNow ITSM</span>
-        <span class="badge">IT Support</span>
-        <span class="badge">Linux & Cloud Lab</span>
+        <span class="badge">ITIL Foundations</span>
+        <span class="badge">Helpdesk & Troubleshooting</span>
+        <span class="badge">Sistemi & Cloud Lab</span>
+      </div>
+
+      <!-- Sostituisci i link # con i tuoi veri indirizzi -->
+      <div class="links-container">
+        <a href="https://linkedin.com/in/tuonome" target="_blank" class="btn btn-primary">LinkedIn ↗</a>
+        <a href="https://github.com/sameerkhan-work" target="_blank" class="btn">GitHub ↗</a>
+        <a href="mailto:iltuonome@email.com" class="btn">Scrivimi</a>
       </div>
     </header>
 
-    <h2 class="section-title">Aree di Competenza & Progetti</h2>
+    <h2 class="section-title">Aree di Competenza & Laboratori</h2>
 
     <div class="card">
-      <h3>Processi IT & ServiceNow</h3>
-      <p>Gestione del ciclo di vita dei ticket, Incident Management e automazione di flussi di lavoro aziendali su istanze ServiceNow Developer.</p>
+      <div class="card-header">
+        <h3>ServiceNow & IT Service Management</h3>
+        <span class="status-badge status-active">Operativo</span>
+      </div>
+      <p>Configurazione e simulazione di processi ITSM su istanze ServiceNow Developer: gestione incidenti, catalog item per richieste utente e logiche di instradamento ticket.</p>
+      <div class="tech-list">
+        <span class="tech-item">Incident Management</span>
+        <span class="tech-item">Service Catalog</span>
+        <span class="tech-item">Flow Designer</span>
+        <span class="tech-item">CMDB Base</span>
+      </div>
     </div>
 
     <div class="card">
-      <h3>Sistemi & Networking <span class="status">In arrivo con ITS</span></h3>
-      <p>Laboratori pratici su macchine virtuali Linux/Windows, configurazioni di rete locale, gestione utenti e infrastruttura cloud.</p>
+      <div class="card-header">
+        <h3>Supporto Tecnico & IT Operations</h3>
+        <span class="status-badge status-active">Operativo</span>
+      </div>
+      <p>Diagnostica problematiche client (Windows/Linux), analisi logica per isolare guasti hardware/software e stesura di procedure di risoluzione per utenti aziendali.</p>
+      <div class="tech-list">
+        <span class="tech-item">Troubleshooting 1°/2° Livello</span>
+        <span class="tech-item">Ticketing Workflow</span>
+        <span class="tech-item">Documentazione Tecnica</span>
+      </div>
     </div>
 
     <div class="card">
-      <h3>Supporto Tecnico & Troubleshooting</h3>
-      <p>Risoluzione problemi hardware/software, diagnostica di primo e secondo livello e documentazione tecnica delle procedure.</p>
+      <div class="card-header">
+        <h3>Sistemi, Networking & Cloud</h3>
+        <span class="status-badge status-upcoming">Percorso ITS in avvio</span>
+      </div>
+      <p>Configurazione di macchine virtuali su cloud Azure, gestione permessi e comandi Linux da riga di comando, architetture di rete locale (IP, Subnet, DNS).</p>
+      <div class="tech-list">
+        <span class="tech-item">Linux (Ubuntu/Debian)</span>
+        <span class="tech-item">Microsoft Azure</span>
+        <span class="tech-item">Networking & Subnetting</span>
+        <span class="tech-item">Active Directory</span>
+      </div>
     </div>
 
     <footer>
-      <p>© 2026 Sameer Khan — Sito personale</p>
+      <p>© 2026 Sameer Khan — Ospitato su GitHub Pages & Dominio Personalizzato</p>
     </footer>
+
   </div>
 </body>
 </html>
