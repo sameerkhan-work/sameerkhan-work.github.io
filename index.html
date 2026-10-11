@@ -1,145 +1,204 @@
+```html
 <!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sameer Khan — IT Help Desk & ServiceNow Specialist</title>
+  <title>Sameer Khan — Junior IT Support & ServiceNow Specialist</title>
   
-  <meta name="description" content="Portfolio di Sameer Khan: Junior IT Technical Support & ServiceNow Trainee certificato Now Learning.">
+  <meta name="description" content="Portfolio di Sameer Khan: Junior IT Help Desk, ServiceNow Trainee con micro-certificazioni Now Learning e competenze in troubleshooting hardware/reti.">
   <meta property="og:title" content="Sameer Khan — IT Support & ServiceNow">
-  <meta property="og:description" content="Troubleshooting hardware/software, Active Directory, Microsoft 365 e ServiceNow Low-Code.">
+  <meta property="og:description" content="Risoluzione guasti PC, Active Directory, M365, reti e sviluppo ServiceNow Low-Code.">
   <meta property="og:type" content="website">
 
-  <!-- Google Font: Plus Jakarta Sans & JetBrains Mono -->
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #060911;
-      --card-bg: rgba(15, 23, 42, 0.65);
+      --bg-dark: #05070d;
+      --card-bg: rgba(11, 17, 32, 0.75);
       --card-border: rgba(255, 255, 255, 0.08);
-      --card-hover-border: rgba(56, 189, 248, 0.4);
-      --card-hover-bg: rgba(24, 34, 58, 0.75);
-      --primary: #38bdf8;
-      --primary-dark: #0284c7;
-      --accent: #10b981;
-      --accent-glow: rgba(16, 185, 129, 0.2);
-      --text-main: #f8fafc;
+      --card-hover-border: rgba(56, 189, 248, 0.5);
+      --neon-cyan: #38bdf8;
+      --neon-emerald: #10b981;
+      --neon-indigo: #818cf8;
+      --neon-amber: #f59e0b;
+      --text-pure: #ffffff;
       --text-muted: #94a3b8;
-      --text-soft: #cbd5e1;
+      --text-body: #cbd5e1;
       --font-mono: 'JetBrains Mono', monospace;
-      --radius-lg: 24px;
-      --radius-md: 16px;
+      --radius-xl: 22px;
       --radius-pill: 9999px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--bg);
-      background-image: 
-        radial-gradient(circle at 50% -10%, rgba(14, 165, 233, 0.16) 0%, transparent 55%),
-        radial-gradient(circle at 90% 25%, rgba(99, 102, 241, 0.09) 0%, transparent 45%),
-        radial-gradient(circle at 10% 70%, rgba(16, 185, 129, 0.06) 0%, transparent 40%);
-      background-attachment: fixed;
-      color: var(--text-main);
+      background-color: var(--bg-dark);
+      color: var(--text-pure);
       line-height: 1.6;
-      padding: 3rem 1.25rem 6rem;
       min-height: 100vh;
-      -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+      position: relative;
+      -webkit-font-smoothing: antialiased;
     }
 
+    /* CANVAS SFONDO INTERATTIVO */
+    #ambient-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    /* GLOW RADIALI DI PROFONDITÀ */
+    .ambient-glow {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.45;
+      animation: floatGlow 12s ease-in-out infinite alternate;
+    }
+
+    .glow-cyan {
+      top: -10%;
+      left: 30%;
+      width: 650px;
+      height: 650px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.28) 0%, transparent 70%);
+    }
+
+    .glow-indigo {
+      bottom: 5%;
+      right: 5%;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(129, 140, 248, 0.22) 0%, transparent 70%);
+    }
+
+    @keyframes floatGlow {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(40px) scale(1.08); }
+    }
+
+    /* CONTENITORE AMPIO PER DESKTOP */
     .container {
-      max-width: 1020px;
+      max-width: 1260px;
       margin: 0 auto;
+      padding: 3rem 1.5rem 6rem;
+      position: relative;
+      z-index: 1;
     }
 
-    /* BADGE STATO OPERATIVO */
-    .status-wrap {
+    /* BARRA STATO E DISPONIBILITÀ */
+    .status-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.55rem;
+      gap: 0.6rem;
+      padding: 0.45rem 1.15rem;
       background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      color: #34d399;
-      padding: 0.4rem 1rem;
+      border: 1px solid rgba(16, 185, 129, 0.35);
       border-radius: var(--radius-pill);
-      font-size: 0.82rem;
+      color: #34d399;
+      font-size: 0.85rem;
       font-weight: 600;
-      margin-bottom: 1.75rem;
-      backdrop-filter: blur(8px);
+      letter-spacing: 0.01em;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+      backdrop-filter: blur(12px);
     }
 
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--accent);
+    .pulse-dot {
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
-      box-shadow: 0 0 10px var(--accent);
-      animation: pulse 2s infinite;
+      background: var(--neon-emerald);
+      box-shadow: 0 0 10px var(--neon-emerald);
+      animation: neonPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     }
 
-    @keyframes pulse {
+    @keyframes neonPulse {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.35; transform: scale(0.85); }
+      50% { opacity: 0.35; transform: scale(0.8); }
     }
 
-    /* HERO & HEADER */
+    /* HEADER PRINCIPALE A DUE COLONNE */
     header {
-      margin-bottom: 2.75rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2.5rem;
+      align-items: center;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 3rem;
     }
 
-    .hero-title {
-      font-size: clamp(2.3rem, 5.5vw, 3.4rem);
+    .hero-info h1 {
+      font-size: clamp(2.6rem, 5vw, 4rem);
       font-weight: 800;
-      letter-spacing: -0.035em;
-      line-height: 1.15;
-      background: linear-gradient(180deg, #ffffff 40%, #cbd5e1 100%);
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 0.85rem;
+      background: linear-gradient(135deg, #ffffff 40%, #bae6fd 80%, #7dd3fc 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 0.65rem;
     }
 
-    .hero-subtitle {
-      font-size: 1.18rem;
+    .hero-tagline {
+      font-size: 1.22rem;
       color: var(--text-muted);
-      max-width: 760px;
+      max-width: 740px;
       line-height: 1.65;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.65rem;
     }
 
-    .hero-subtitle strong {
-      color: var(--text-soft);
+    .hero-tagline strong {
+      color: #f1f5f9;
       font-weight: 600;
     }
 
-    /* PILLS DI STATO E LOCALITÀ */
-    .pills-list {
+    .pills-group {
       display: flex;
       flex-wrap: wrap;
       gap: 0.55rem;
-      margin-bottom: 1.75rem;
+      margin-bottom: 2rem;
     }
 
-    .pill-item {
+    .pill {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.45rem;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--card-border);
-      color: var(--text-soft);
-      padding: 0.35rem 0.85rem;
+      color: var(--text-body);
+      padding: 0.35rem 0.95rem;
       border-radius: var(--radius-pill);
       font-size: 0.84rem;
       font-weight: 500;
+      transition: all 0.2s ease;
     }
 
-    /* BOTTONI DI CONTATTO */
-    .actions-group {
+    .pill:hover {
+      border-color: rgba(56, 189, 248, 0.3);
+      color: #ffffff;
+      background: rgba(56, 189, 248, 0.06);
+    }
+
+    /* PULSANTI DI CONTATTO */
+    .cta-group {
       display: flex;
       flex-wrap: wrap;
       gap: 0.85rem;
@@ -148,13 +207,13 @@
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.55rem;
-      padding: 0.65rem 1.35rem;
+      gap: 0.6rem;
+      padding: 0.75rem 1.6rem;
       border-radius: var(--radius-pill);
-      font-size: 0.92rem;
+      font-size: 0.94rem;
       font-weight: 600;
       text-decoration: none;
-      transition: all 0.22s ease;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       cursor: pointer;
       border: 1px solid transparent;
     }
@@ -162,644 +221,960 @@
     .btn-primary {
       background: linear-gradient(135deg, #0284c7, #0369a1);
       color: #ffffff;
-      box-shadow: 0 4px 18px rgba(2, 132, 199, 0.32);
+      box-shadow: 0 4px 20px rgba(2, 132, 199, 0.35), 0 0 15px rgba(56, 189, 248, 0.2);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(2, 132, 199, 0.45);
+      box-shadow: 0 8px 28px rgba(2, 132, 199, 0.5), 0 0 25px rgba(56, 189, 248, 0.35);
     }
 
     .btn-glass {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.04);
       border-color: var(--card-border);
-      color: var(--text-main);
+      color: #ffffff;
       backdrop-filter: blur(10px);
     }
 
     .btn-glass:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(56, 189, 248, 0.35);
+      color: var(--neon-cyan);
       transform: translateY(-2px);
     }
 
     .btn svg {
-      width: 17px;
-      height: 17px;
+      width: 18px;
+      height: 18px;
       fill: currentColor;
     }
 
-    /* BARRA FILTRI INTERATTIVI */
-    .filter-bar {
-      display: flex;
-      gap: 0.5rem;
-      margin: 2.5rem 0 1.25rem;
-      padding-bottom: 0.5rem;
-      overflow-x: auto;
-    }
-
-    .filter-tab {
-      background: rgba(255, 255, 255, 0.03);
+    /* SCHEDA PROFILO A DESTRA */
+    .profile-card {
+      background: rgba(15, 23, 42, 0.6);
       border: 1px solid var(--card-border);
+      border-radius: var(--radius-xl);
+      padding: 1.75rem 2rem;
+      backdrop-filter: blur(16px);
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+      min-width: 290px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .profile-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .profile-label {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
       color: var(--text-muted);
-      padding: 0.45rem 1rem;
-      border-radius: var(--radius-pill);
-      font-size: 0.85rem;
+      font-family: var(--font-mono);
+    }
+
+    .profile-val {
+      font-size: 0.95rem;
       font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      white-space: nowrap;
+      color: #ffffff;
     }
 
-    .filter-tab:hover {
-      color: var(--text-main);
-      border-color: rgba(255, 255, 255, 0.2);
+    .profile-val.highlight {
+      color: var(--neon-cyan);
     }
 
-    .filter-tab.active {
-      background: rgba(56, 189, 248, 0.12);
-      border-color: rgba(56, 189, 248, 0.4);
-      color: var(--primary);
-    }
-
-    /* BENTO GRID */
+    /* BENTO GRID LAYOUT */
     .bento-grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
-      gap: 1.25rem;
+      gap: 1.5rem;
     }
 
     .bento-card {
       background: var(--card-bg);
-      backdrop-filter: blur(18px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--card-border);
-      border-radius: var(--radius-lg);
-      padding: 1.75rem;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
       position: relative;
-      overflow: hidden;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.25s ease;
+      overflow: hidden;
     }
 
     .bento-card:hover {
       border-color: var(--card-hover-border);
-      background: var(--card-hover-bg);
       transform: translateY(-3px);
-      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 25px rgba(56, 189, 248, 0.12);
     }
 
+    /* SPAN DELLE COLONNE */
     .col-12 { grid-column: span 12; }
     .col-8  { grid-column: span 8; }
+    .col-7  { grid-column: span 7; }
     .col-6  { grid-column: span 6; }
+    .col-5  { grid-column: span 5; }
     .col-4  { grid-column: span 4; }
 
-    /* CARD HEADERS & TITLES */
-    .card-badge {
-      display: inline-block;
-      align-self: flex-start;
-      background: rgba(2, 132, 199, 0.14);
-      border: 1px solid rgba(56, 189, 248, 0.28);
-      color: var(--primary);
-      font-size: 0.72rem;
+    /* CARD HEADER & LABELS */
+    .badge-neon {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: var(--neon-cyan);
+      font-size: 0.76rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
-      padding: 0.25rem 0.65rem;
+      letter-spacing: 0.05em;
+      padding: 0.3rem 0.85rem;
       border-radius: var(--radius-pill);
-      margin-bottom: 0.85rem;
+      margin-bottom: 1.15rem;
+      align-self: flex-start;
     }
 
     .card-title {
-      font-size: 1.22rem;
+      font-size: 1.35rem;
       font-weight: 700;
+      letter-spacing: -0.02em;
       color: #ffffff;
-      margin-bottom: 0.65rem;
+      margin-bottom: 0.75rem;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
     }
 
     .card-desc {
       color: var(--text-muted);
-      font-size: 0.94rem;
+      font-size: 0.98rem;
       line-height: 1.65;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.4rem;
     }
 
-    /* LISTE DI DETTAGLIO */
-    .detail-list {
-      list-style: none;
+    /* ELEMENTI DI SPECIFICA TECNICA (RISOLUZIONE SFALSAMENTO TESTI) */
+    .specs-stack {
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
-      margin: 0.5rem 0 1.25rem;
+      gap: 0.95rem;
+      margin-bottom: 1.4rem;
     }
 
-    .detail-list li {
-      font-size: 0.9rem;
-      color: var(--text-soft);
+    .spec-item {
       display: flex;
       align-items: flex-start;
-      gap: 0.6rem;
-      line-height: 1.5;
+      gap: 0.75rem;
+      line-height: 1.6;
     }
 
-    .detail-list li::before {
-      content: "•";
-      color: var(--primary);
-      font-size: 1.2rem;
-      line-height: 1;
-      margin-top: 2px;
+    .spec-marker {
+      color: var(--neon-cyan);
+      font-weight: bold;
+      font-size: 1.15rem;
+      line-height: 1.2;
+      flex-shrink: 0;
     }
 
-    /* TAG PILLS */
-    .tags-wrap {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-      margin-top: auto;
-      padding-top: 0.75rem;
+    .spec-text {
+      color: var(--text-body);
+      font-size: 0.93rem;
+      overflow-wrap: break-word;
     }
 
-    .tag-pill {
-      font-size: 0.78rem;
-      font-weight: 500;
-      color: #cbd5e1;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      padding: 0.25rem 0.65rem;
-      border-radius: var(--radius-pill);
-    }
-
-    .tag-highlight {
-      color: #38bdf8;
-      background: rgba(56, 189, 248, 0.08);
-      border-color: rgba(56, 189, 248, 0.25);
-    }
-
-    /* CERTIFICAZIONI PILL */
-    .cert-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.75rem 1rem;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius-md);
-      margin-bottom: 0.6rem;
-      transition: all 0.2s ease;
-    }
-
-    .cert-row:hover {
-      border-color: rgba(255, 255, 255, 0.16);
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    .cert-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: #f1f5f9;
-    }
-
-    .cert-sub {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    .cert-badge {
-      font-size: 0.72rem;
+    .spec-highlight {
       font-weight: 700;
-      padding: 0.25rem 0.65rem;
-      border-radius: var(--radius-pill);
-      white-space: nowrap;
+      color: #ffffff;
+      margin-right: 0.35rem;
     }
 
-    .cert-badge.done {
-      background: rgba(16, 185, 129, 0.14);
-      color: #34d399;
-      border: 1px solid rgba(16, 185, 129, 0.3);
-    }
-
-    .cert-badge.prog {
-      background: rgba(245, 158, 11, 0.14);
-      color: #fbbf24;
-      border: 1px solid rgba(245, 158, 11, 0.3);
-    }
-
-    /* TERMINALE ARROTONDATO */
-    .terminal-wrapper {
-      background: #020617;
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      border-radius: var(--radius-md);
-      overflow: hidden;
+    /* COMANDI INLINE DI CODICE (NESSUNA ROTTURA A METÀ) */
+    code {
       font-family: var(--font-mono);
-      margin-top: 0.5rem;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      color: #7dd3fc;
+      padding: 0.15rem 0.45rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      white-space: nowrap;
+      display: inline-block;
+      margin: 0 0.15rem;
     }
 
-    .terminal-top {
-      background: #0d1424;
-      padding: 0.6rem 0.95rem;
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .t-dot { width: 10px; height: 10px; border-radius: 50%; }
-    .t-red { background: #ef4444; }
-    .t-yel { background: #f59e0b; }
-    .t-gre { background: #10b981; }
-
-    .t-label {
-      color: #94a3b8;
-      font-size: 0.76rem;
-      margin-left: 0.5rem;
-    }
-
-    .terminal-screen {
-      padding: 1.15rem;
-      font-size: 0.85rem;
-      color: #e2e8f0;
-      min-height: 145px;
-      line-height: 1.55;
-    }
-
-    .t-prompt { color: #38bdf8; }
-    .t-output { color: #94a3b8; margin-top: 0.2rem; }
-
-    .terminal-actions {
+    /* TAGS PILLS IN FONDO ALLE CARD */
+    .tags-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.45rem;
-      padding: 0.75rem 1rem;
-      background: #080c16;
+      gap: 0.5rem;
+      margin-top: auto;
+      padding-top: 1.2rem;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .cmd-chip {
+    .tag-item {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #cbd5e1;
       background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      padding: 0.28rem 0.75rem;
+      border-radius: var(--radius-pill);
+      transition: all 0.2s ease;
+    }
+
+    .tag-item:hover {
+      border-color: rgba(56, 189, 248, 0.3);
+      color: #ffffff;
+    }
+
+    .tag-active {
+      color: var(--neon-cyan);
+      background: rgba(56, 189, 248, 0.09);
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    /* SCHEDE CREDENZIALI NOW LEARNING */
+    .cert-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      margin-bottom: 1rem;
+    }
+
+    .cert-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 1.1rem;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .cert-card:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(56, 189, 248, 0.25);
+      transform: translateX(3px);
+    }
+
+    .cert-name {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .cert-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .badge-status {
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-pill);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .badge-done {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.15);
+    }
+
+    .badge-prog {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.12);
+    }
+
+    /* TERMINALE INTERATTIVO CYBER CONSOLE */
+    .terminal-container {
+      background: #030712;
       border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #38bdf8;
+      border-radius: 16px;
+      overflow: hidden;
       font-family: var(--font-mono);
+      box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.8);
+    }
+
+    .terminal-head {
+      background: #0b1120;
+      padding: 0.7rem 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .t-btn-dot { width: 11px; height: 11px; border-radius: 50%; }
+    .dot-close { background: #ef4444; }
+    .dot-min { background: #f59e0b; }
+    .dot-max { background: #10b981; }
+
+    .t-host {
+      color: var(--text-muted);
       font-size: 0.78rem;
-      padding: 0.25rem 0.65rem;
+      margin-left: 0.6rem;
+    }
+
+    .terminal-display {
+      padding: 1.25rem 1.4rem;
+      font-size: 0.88rem;
+      color: #e2e8f0;
+      min-height: 165px;
+      max-height: 240px;
+      overflow-y: auto;
+      line-height: 1.6;
+    }
+
+    .t-prompt-line {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .t-user { color: var(--neon-cyan); font-weight: 600; }
+    .t-log { color: #94a3b8; margin-bottom: 0.75rem; padding-left: 0.5rem; border-left: 2px solid rgba(56, 189, 248, 0.3); }
+
+    .terminal-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0.85rem 1.2rem;
+      background: #070b14;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .t-action-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--neon-cyan);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      padding: 0.35rem 0.8rem;
       border-radius: var(--radius-pill);
       cursor: pointer;
-      transition: all 0.15s ease;
+      transition: all 0.2s ease;
     }
 
-    .cmd-chip:hover {
-      background: rgba(56, 189, 248, 0.16);
-      border-color: rgba(56, 189, 248, 0.4);
+    .t-action-btn:hover {
+      background: rgba(56, 189, 248, 0.18);
+      border-color: rgba(56, 189, 248, 0.45);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
     }
 
-    /* GRIGLIA LINGUE */
+    /* CARD LINGUE & MOBILITÀ */
     .languages-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 0.65rem;
-      margin-top: 0.75rem;
+      gap: 0.8rem;
+      margin-top: 0.8rem;
     }
 
-    .lang-box {
-      background: rgba(255, 255, 255, 0.03);
+    .lang-item {
+      background: rgba(255, 255, 255, 0.025);
       border: 1px solid var(--card-border);
-      border-radius: var(--radius-md);
-      padding: 0.65rem 0.85rem;
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      transition: border-color 0.2s ease;
     }
 
-    .lang-tit { font-size: 0.88rem; font-weight: 600; color: #f1f5f9; }
-    .lang-lvl { font-size: 0.76rem; color: var(--text-muted); }
+    .lang-item:hover {
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .lang-name { font-size: 0.92rem; font-weight: 700; color: #ffffff; }
+    .lang-level { font-size: 0.78rem; color: var(--text-muted); }
+
+    .mobility-note {
+      margin-top: 1.4rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--card-border);
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .mobility-note strong {
+      color: #ffffff;
+    }
 
     /* FOOTER */
     footer {
-      margin-top: 4.5rem;
+      margin-top: 5rem;
       padding-top: 2rem;
       border-top: 1px solid var(--card-border);
-      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
       color: #64748b;
       font-size: 0.88rem;
     }
 
-    /* TOAST COPIA */
-    #toast {
-      position: fixed;
-      bottom: 2.25rem;
-      left: 50%;
-      transform: translateX(-50%) translateY(120px);
-      background: #0284c7;
-      color: #ffffff;
-      padding: 0.65rem 1.4rem;
-      border-radius: var(--radius-pill);
-      font-size: 0.88rem;
-      font-weight: 600;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      opacity: 0;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      z-index: 1000;
-      pointer-events: none;
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
     }
 
-    #toast.show {
+    footer a:hover {
+      color: var(--neon-cyan);
+    }
+
+    /* TOAST COPIA RAPIDA EMAIL */
+    #toast-msg {
+      position: fixed;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(140px);
+      background: linear-gradient(135deg, #0284c7, #0f172a);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #ffffff;
+      padding: 0.75rem 1.6rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.92rem;
+      font-weight: 600;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.35);
+      opacity: 0;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 9999;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    #toast-msg.visible {
       transform: translateX(-50%) translateY(0);
       opacity: 1;
     }
 
-    /* RESPONSIVE PERFETTO (PC / TABLET / SMARTPHONE) */
-    @media (max-width: 950px) {
-      .col-8, .col-4 { grid-column: span 12; }
+    /* OTTIMIZZAZIONE RESPONSIVE TOTALE */
+    @media (max-width: 1080px) {
+      header { grid-template-columns: 1fr; }
+      .profile-card { width: 100%; }
+      .col-8, .col-7, .col-5, .col-4 { grid-column: span 12; }
       .col-6 { grid-column: span 12; }
     }
 
-    @media (max-width: 640px) {
-      body { padding: 2rem 1rem 4rem; }
-      .hero-title { font-size: 2.2rem; }
-      .actions-group { width: 100%; }
-      .btn { flex: 1 1 calc(50% - 0.5rem); justify-content: center; }
-      .btn-primary { flex: 1 1 100%; }
+    @media (max-width: 680px) {
+      .container { padding: 2rem 1.1rem 4rem; }
+      .hero-info h1 { font-size: 2.35rem; }
+      .cta-group { width: 100%; }
+      .btn { flex: 1 1 100%; justify-content: center; }
+      .bento-card { padding: 1.5rem; border-radius: 18px; }
       .languages-grid { grid-template-columns: 1fr; }
-      .bento-card { padding: 1.35rem; }
     }
   </style>
 </head>
 <body>
 
+  <!-- CANVAS PARTICELLE SFONDO -->
+  <canvas id="ambient-canvas"></canvas>
+
+  <!-- BAGLIORI NEON FLUTTUANTI -->
+  <div class="ambient-glow glow-cyan"></div>
+  <div class="ambient-glow glow-indigo"></div>
+
   <div class="container">
     
-    <!-- STATO REALE: DISPONIBILITÀ IMMEDIATA -->
-    <div class="status-wrap">
-      <span class="status-dot"></span>
-      Disponibilità Immediata | Stage & Apprendistato IT
+    <!-- STATO OPERATIVO -->
+    <div class="status-badge">
+      <span class="pulse-dot"></span>
+      Disponibilità Immediata · Stage, Academy & Apprendistato IT
     </div>
 
-    <!-- HEADER / HERO -->
+    <!-- HEADER: INFO PERSONALI & SCHEDA TECNICA RAPIDA -->
     <header>
-      <h1 class="hero-title">Sameer Khan</h1>
-      <p class="hero-subtitle">
-        <strong>Junior IT Help Desk & Technical Support</strong> con competenze su <strong>ServiceNow Low-Code</strong>, gestione ticket ITIL e manutenzione client. Risoluzione pratica di anomalie hardware, software e di rete.
-      </p>
+      <div class="hero-info">
+        <h1>Sameer Khan</h1>
+        <p class="hero-tagline">
+          <strong>Junior IT Help Desk & Technical Support</strong> con formazione pratica e certificazioni ufficiali su <strong>ServiceNow Low-Code</strong>. Risoluzione metodica di problematiche hardware, software, sistemi e reti locali.
+        </p>
 
-      <div class="pills-list">
-        <span class="pill-item">📍 Latina (LT)</span>
-        <span class="pill-item">🚆 Mobilità Roma e provincia</span>
-        <span class="pill-item">🚗 Patente B</span>
-        <span class="pill-item">⚡ Pronto a iniziare</span>
+        <div class="pills-group">
+          <span class="pill">📍 Latina (LT)</span>
+          <span class="pill">🚆 Mobilità Roma e provincia</span>
+          <span class="pill">🚗 Patente B</span>
+          <span class="pill">⚡ Inserimento Immediato</span>
+        </div>
+
+        <div class="cta-group">
+          <a href="https://www.linkedin.com/in/sameer-khan-375b10424" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://github.com/sameerkhan-work" target="_blank" rel="noopener noreferrer" class="btn btn-glass">
+            <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            GitHub
+          </a>
+          <button class="btn btn-glass" onclick="copyContactEmail()">
+            <svg viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/></svg>
+            Copia Email
+          </button>
+        </div>
       </div>
 
-      <div class="actions-group">
-        <a href="https://www.linkedin.com/in/sameer-khan-375b10424" target="_blank" class="btn btn-primary">
-          <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-          LinkedIn
-        </a>
-        <a href="https://github.com/sameerkhan-work" target="_blank" class="btn btn-glass">
-          <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-          GitHub
-        </a>
-        <button class="btn btn-glass" onclick="copyEmail()">
-          <svg viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/></svg>
-          Copia Email
-        </button>
+      <!-- WIDGET TELEMETRIA PROFILO -->
+      <div class="profile-card">
+        <div class="profile-item">
+          <span class="profile-label">Profilo & Specializzazione</span>
+          <span class="profile-val highlight">IT Operations & Support L1/L2</span>
+        </div>
+        <div class="profile-item">
+          <span class="profile-label">Piattaforma Principale</span>
+          <span class="profile-val">ServiceNow (Now Learning)</span>
+        </div>
+        <div class="profile-item">
+          <span class="profile-label">Sistemi di Riferimento</span>
+          <span class="profile-val">Windows 10/11 · Linux CLI · M365</span>
+        </div>
+        <div class="profile-item">
+          <span class="profile-label">Stato Contrattuale</span>
+          <span class="profile-val highlight">Disponibile Subito</span>
+        </div>
       </div>
     </header>
 
-    <!-- FILTRO INTERATTIVO CONTENUTI -->
-    <div class="filter-bar">
-      <button class="filter-tab active" onclick="filterCategory('all')">Tutti i Progetti & Aree</button>
-      <button class="filter-tab" onclick="filterCategory('sn')">ServiceNow & Flussi</button>
-      <button class="filter-tab" onclick="filterCategory('it')">Help Desk & Sistemi</button>
-    </div>
+    <!-- BENTO GRID TECNICA -->
+    <main class="bento-grid">
 
-    <!-- BENTO GRID -->
-    <div class="bento-grid">
+      <!-- BLOCCO 1: PROGETTO SERVICENOW PDI (COL-7) -->
+      <section class="bento-card col-7">
+        <div>
+          <span class="badge-neon">Progetto Pratico su PDI</span>
+          <h2 class="card-title">IT Provisioning & Service Automation (Scoped App)</h2>
+          <p class="card-desc">
+            Applicazione sviluppata in autonomia su Personal Developer Instance (PDI) di ServiceNow per digitalizzare la richiesta e l'assegnazione dell'hardware aziendale:
+          </p>
 
-      <!-- BLOCCO 1: PROGETTO SERVICENOW PDI (COL-8) -->
-      <div class="bento-card col-8 card-category" data-cat="sn">
-        <span class="card-badge">Progetto Pratico su PDI</span>
-        <h2 class="card-title">IT Provisioning & Service Automation (Scoped App)</h2>
-        <p class="card-desc">
-          Sviluppo completo su Personal Developer Instance (PDI) di ServiceNow per digitalizzare e automatizzare le richieste di asset hardware e attrezzatura tecnica aziendale.
-        </p>
-
-        <ul class="detail-list">
-          <li><strong>Automazione Flusso (Flow Designer):</strong> Modulo catalogo per selezione dispositivi, smistamento automatico ai gruppi di supporto e trigger approvativi per i responsabili.</li>
-          <li><strong>Governance & Logica:</strong> Regole UI Policy applicate per mantenere la priorità in sola lettura e instradamento dinamico secondo gli SLA aziendali.</li>
-          <li><strong>Collaudo & Versioning:</strong> Test funzionali superati al 100% ed esportazione dell'<strong>Update Set XML</strong> archiviato nel repository GitHub.</li>
-        </ul>
-
-        <div class="tags-wrap">
-          <span class="tag-pill tag-highlight">ServiceNow PDI</span>
-          <span class="tag-pill">App Engine Studio</span>
-          <span class="tag-pill">Flow Designer</span>
-          <span class="tag-pill">UI Policies</span>
-          <span class="tag-pill">SLA Routing</span>
-          <span class="tag-pill">Update Set XML</span>
-        </div>
-      </div>
-
-      <!-- BLOCCO 2: CREDENZIALI NOW LEARNING (COL-4) -->
-      <div class="bento-card col-4 card-category" data-cat="sn">
-        <span class="card-badge">Formazione Ufficiale</span>
-        <h2 class="card-title">Credenziali ServiceNow</h2>
-        <p class="card-desc">Micro-certificazioni conseguite su piattaforma ufficiale Now Learning e studio attivo per l'esame sistemistico.</p>
-
-        <div class="cert-row">
-          <div>
-            <div class="cert-title">Flow Designer Fund.</div>
-            <div class="cert-sub">Automazione No/Low-Code</div>
+          <div class="specs-stack">
+            <div class="spec-item">
+              <span class="spec-marker">›</span>
+              <div class="spec-text">
+                <span class="spec-highlight">Automazione con Flow Designer:</span> Modulo di catalogo per selezione asset, assegnazione automatica ai gruppi di supporto e trigger approvativi per i responsabili.
+              </div>
+            </div>
+            <div class="spec-item">
+              <span class="spec-marker">›</span>
+              <div class="spec-text">
+                <span class="spec-highlight">Governance & Logica Piattaforma:</span> Configurazione di UI Policy con campo <code>Priority</code> in Read-Only e gestione delle priorità in base ai tempi di SLA previsti.
+              </div>
+            </div>
+            <div class="spec-item">
+              <span class="spec-marker">›</span>
+              <div class="spec-text">
+                <span class="spec-highlight">Collaudo & Versioning:</span> Test funzionali end-to-end completati al 100% ed esportazione dell'<strong>Update Set XML</strong> archiviato nel repository pubblico GitHub.
+              </div>
+            </div>
           </div>
-          <span class="cert-badge done">Certificato</span>
         </div>
 
-        <div class="cert-row">
-          <div>
-            <div class="cert-title">App Engine Studio Fund.</div>
-            <div class="cert-sub">Sviluppo rapido Scoped App</div>
+        <div class="tags-container">
+          <span class="tag-item tag-active">ServiceNow PDI</span>
+          <span class="tag-item">App Engine Studio</span>
+          <span class="tag-item">Flow Designer</span>
+          <span class="tag-item">UI Policies</span>
+          <span class="tag-item">SLA Management</span>
+          <span class="tag-item">Update Set XML</span>
+        </div>
+      </section>
+
+      <!-- BLOCCO 2: CREDENZIALI NOW LEARNING (COL-5) -->
+      <section class="bento-card col-5">
+        <div>
+          <span class="badge-neon">Formazione Ufficiale</span>
+          <h2 class="card-title">Credenziali ServiceNow</h2>
+          <p class="card-desc">Micro-certificazioni ufficiali completate su Now Learning e percorso di studio sistemistico attivo:</p>
+
+          <div class="cert-rows">
+            <div class="cert-card">
+              <div>
+                <div class="cert-name">Flow Designer Fundamentals</div>
+                <div class="cert-sub">Logiche di automazione Low-Code</div>
+              </div>
+              <span class="badge-status badge-done">Certificato</span>
+            </div>
+
+            <div class="cert-card">
+              <div>
+                <div class="cert-name">App Engine Studio Fundamentals</div>
+                <div class="cert-sub">Sviluppo rapido Scoped Applications</div>
+              </div>
+              <span class="badge-status badge-done">Certificato</span>
+            </div>
+
+            <div class="cert-card">
+              <div>
+                <div class="cert-name">Welcome to ServiceNow</div>
+                <div class="cert-sub">Architettura, navigazione e tabelle</div>
+              </div>
+              <span class="badge-status badge-done">Certificato</span>
+            </div>
+
+            <div class="cert-card">
+              <div>
+                <div class="cert-name">ServiceNow CSA (SysAdmin)</div>
+                <div class="cert-sub">Preparazione esame sistemistico</div>
+              </div>
+              <span class="badge-status badge-prog">Studio Attivo</span>
+            </div>
           </div>
-          <span class="cert-badge done">Certificato</span>
         </div>
 
-        <div class="cert-row">
-          <div>
-            <div class="cert-title">Welcome to ServiceNow</div>
-            <div class="cert-sub">Architettura e navigazione</div>
+        <div class="tags-container">
+          <span class="tag-item tag-active">Now Learning</span>
+          <span class="tag-item">Low-Code Dev</span>
+          <span class="tag-item">Aspirante CSA</span>
+        </div>
+      </section>
+
+      <!-- BLOCCO 3: IT SUPPORT, SISTEMI & HARDWARE (COL-6) -->
+      <section class="bento-card col-6">
+        <div>
+          <span class="badge-neon">Supporto Tecnico Client</span>
+          <h2 class="card-title">Sistemi Operativi, AD & Hardware</h2>
+          <p class="card-desc">
+            Manutenzione pratica di postazioni client, gestione delle identità aziendali e diagnostica guasti:
+          </p>
+
+          <div class="specs-stack">
+            <div class="spec-item">
+              <span class="spec-marker">›</span>
+              <div class="spec-text">
+                <span class="spec-highlight">Sistemi Client:</span> Installazione, configurazione e ottimizzazione di Windows 10 e Windows 11; utilizzo ordinario di distribuzioni Linux da terminale Bash e supporto dispositivi Android.
+              </div>
+            </div>
+            <div class="spec-item">
+              <span class="spec-marker">›</span>
+              <div class="spec-text">
+                <span class="spec-highlight">Active Directory:</span> Procedure operative di sblocco utenze bloccate, reset credenziali password e verifica appartenenza ai gruppi aziendali.
+              </div>
+            </div>
+            <div class="spec-item">
+              <span class="spec-marker">›</span>
+              <div class="spec-text">
+                <span class="spec-highlight">Microsoft 365:</span> Assistenza su account aziendali, configurazione profili Outlook, sincronizzazione caselle di posta e risoluzione problemi Teams.
+              </div>
+            </div>
+            <div class="spec-item">
+              <span class="spec-marker">›</span>
+              <div class="spec-text">
+                <span class="spec-highlight">Diagnostica Hardware:</span> Individuazione componenti difettosi su PC fissi e portatili, sostituzione parti, montaggio e collaudo operativo.
+              </div>
+            </div>
           </div>
-          <span class="cert-badge done">Certificato</span>
         </div>
 
-        <div class="cert-row">
-          <div>
-            <div class="cert-title">ServiceNow CSA</div>
-            <div class="cert-sub">Certified System Admin</div>
-          </div>
-          <span class="cert-badge prog">Studio Attivo</span>
+        <div class="tags-container">
+          <span class="tag-item tag-active">Windows 10/11</span>
+          <span class="tag-item">Linux Bash</span>
+          <span class="tag-item tag-active">Active Directory</span>
+          <span class="tag-item">Microsoft 365</span>
+          <span class="tag-item">PC Troubleshooting</span>
         </div>
-      </div>
-
-      <!-- BLOCCO 3: IT SUPPORT & SISTEMI (COL-6) -->
-      <div class="bento-card col-6 card-category" data-cat="it">
-        <span class="card-badge">Supporto Tecnico</span>
-        <h2 class="card-title">Sistemi Operativi, AD & Hardware</h2>
-        <p class="card-desc">Risoluzione guasti su postazioni di lavoro aziendali, gestione delle identità e manutenzione hardware.</p>
-
-        <ul class="detail-list">
-          <li><strong>Postazioni Client:</strong> Installazione, configurazione e ripristino ambienti Windows 10/11; utilizzo ordinario di distribuzioni Linux da terminale e gestione Android.</li>
-          <li><strong>Active Directory:</strong> Procedure di sblocco account utente bloccati, reset credenziali password e controllo gruppi di sicurezza.</li>
-          <li><strong>Suite Microsoft 365:</strong> Risoluzione anomalie su profili Outlook, sincronizzazione caselle di posta e piattaforma Teams.</li>
-          <li><strong>Diagnostica Componenti:</strong> Verifica hardware PC, sostituzione componenti difettosi e assemblaggio postazioni.</li>
-        </ul>
-
-        <div class="tags-wrap">
-          <span class="tag-pill tag-highlight">Windows 10/11</span>
-          <span class="tag-pill">Linux Bash</span>
-          <span class="tag-pill tag-highlight">Active Directory</span>
-          <span class="tag-pill">Microsoft 365</span>
-          <span class="tag-pill">Hardware Troubleshooting</span>
-        </div>
-      </div>
+      </section>
 
       <!-- BLOCCO 4: RETI & PROCESSI TICKET (COL-6) -->
-      <div class="bento-card col-6 card-category" data-cat="it">
-        <span class="card-badge">Connettività & Metodo</span>
-        <h2 class="card-title">Reti, VPN & Gestione Ticket</h2>
-        <p class="card-desc">Verifica dei parametri di connettività di rete e rigorosa adozione delle best practice ITIL nella gestione ticket.</p>
+      <section class="bento-card col-6">
+        <div>
+          <span class="badge-neon">Connettività & Metodologia</span>
+          <h2 class="card-title">Reti Locali, VPN & Ciclo Ticket</h2>
+          <p class="card-desc">
+            Diagnostica della connettività e adozione degli standard ITIL per la tracciatura strutturata degli incidenti:
+          </p>
 
-        <ul class="detail-list">
-          <li><strong>Diagnostica LAN / Wi-Fi:</strong> Analisi guasti con comandi base di diagnostica (<code>ping</code>, <code>ipconfig /all</code>, <code>tracert</code>, verifica gateway e DNS).</li>
-          <li><strong>Connettività Remota:</strong> Configurazione e supporto client VPN aziendali per collegamenti da remoto e smart working.</li>
-          <li><strong>Ciclo di Vita Ticket:</strong> Presa in carico, tracciamento degli stati (New, In Progress, Resolved), documentazione accurata e note per l'utente.</li>
-        </ul>
-
-        <div class="tags-wrap">
-          <span class="tag-pill">LAN / Wi-Fi Troubleshooting</span>
-          <span class="tag-pill">Parametri IP / DNS</span>
-          <span class="tag-pill">Client VPN</span>
-          <span class="tag-pill tag-highlight">ITIL Service Desk</span>
-          <span class="tag-pill">SLA Priority</span>
-        </div>
-      </div>
-
-      <!-- BLOCCO 5: TERMINALE INTERATTIVO (COL-8) -->
-      <div class="bento-card col-8 card-category" data-cat="it">
-        <span class="card-badge">Console Interattiva</span>
-        <h2 class="card-title">Ambiente Diagnostico Rapido</h2>
-        <p class="card-desc">Testa i comandi di diagnostica cliccando sui bottoni sottostanti:</p>
-
-        <div class="terminal-wrapper">
-          <div class="terminal-top">
-            <span class="t-dot t-red"></span>
-            <span class="t-dot t-yel"></span>
-            <span class="t-dot t-gre"></span>
-            <span class="t-label">sameer@helpdesk-desk:~</span>
-          </div>
-          <div class="terminal-screen" id="term-screen">
-            <p><span class="t-prompt">sameer@helpdesk:~$</span> whoami</p>
-            <p class="t-output">Sameer Khan — Junior IT Support & ServiceNow Trainee | Latina / Roma</p>
-            <p><span class="t-prompt">sameer@helpdesk:~$</span> check-credentials</p>
-            <p class="t-output">Flow Designer Micro-Cert [OK] | App Engine Studio Micro-Cert [OK] | Welcome to SN [OK] | CSA [Study in progress]</p>
-          </div>
-          <div class="terminal-actions">
-            <button class="cmd-chip" onclick="executeCmd('ping')">ping-gateway</button>
-            <button class="cmd-chip" onclick="executeCmd('ad')">ad-reset-pass</button>
-            <button class="cmd-chip" onclick="executeCmd('app')">sn-scoped-app</button>
-            <button class="cmd-chip" onclick="executeCmd('clear')">clear</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- BLOCCO 6: LINGUE & DISPONIBILITÀ (COL-4) -->
-      <div class="bento-card col-4 card-category" data-cat="all">
-        <span class="card-badge">Punti di Forza</span>
-        <h2 class="card-title">Lingue & Mobilità</h2>
-        <p class="card-desc">Profilo multilingue capace di comunicare sia con colleghi che con utenti e fornitori internazionali.</p>
-
-        <div class="languages-grid">
-          <div class="lang-box">
-            <div class="lang-tit">Italiano</div>
-            <div class="lang-lvl">Madrelingua</div>
-          </div>
-          <div class="lang-box">
-            <div class="lang-tit">Inglese</div>
-            <div class="lang-lvl">Fluente (B2/C1)</div>
-          </div>
-          <div class="lang-box">
-            <div class="lang-tit">Hindi</div>
-            <div class="lang-lvl">Madrelingua (Orale)</div>
-          </div>
-          <div class="lang-box">
-            <div class="lang-tit">Punjabi</div>
-            <div class="lang-lvl">Madrelingua (Orale)</div>
+          <div class="specs-stack">
+            <div class="spec-item">
+              <span class="spec-marker">›</span>
+              <div class="spec-text">
+                <span class="spec-highlight">Troubleshooting Reti LAN / Wi-Fi:</span> Verifica parametri di rete e risoluzione guasti tramite comandi <code>ping</code>, <code>ipconfig /all</code>, <code>tracert</code>, controllo gateway e server DNS.
+              </div>
+            </div>
+            <div class="spec-item">
+              <span class="spec-marker">›</span>
+              <div class="spec-text">
+                <span class="spec-highlight">Accesso Remoto & VPN:</span> Configurazione client VPN per postazioni in smart working e teleassistenza su computer remoti.
+              </div>
+            </div>
+            <div class="spec-item">
+              <span class="spec-marker">›</span>
+              <div class="spec-text">
+                <span class="spec-highlight">Metodologia Ticket (ITIL):</span> Rispetto del ciclo di vita del ticket (New, In Progress, Resolved), categorizzazione corretta, gestione priorità SLA e redazione di note tecniche chiare.
+              </div>
+            </div>
           </div>
         </div>
 
-        <div style="margin-top: 1.15rem; padding-top: 0.85rem; border-top: 1px solid var(--card-border); font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">
-          🚗 <strong>Patente B:</strong> Disponibile per spostamenti giornalieri su <strong>Roma e provincia</strong> (anche con mezzi pubblici).
+        <div class="tags-container">
+          <span class="tag-item">LAN & Wi-Fi Check</span>
+          <span class="tag-item">Parametri IP / DNS</span>
+          <span class="tag-item">Client VPN</span>
+          <span class="tag-item tag-active">ITIL Ticketing</span>
+          <span class="tag-item">SLA Targets</span>
         </div>
-      </div>
+      </section>
 
-    </div>
+      <!-- BLOCCO 5: TERMINALE INTERATTIVO (COL-7) -->
+      <section class="bento-card col-7">
+        <div>
+          <span class="badge-neon">Console Interattiva</span>
+          <h2 class="card-title">Ambiente Diagnostico Rapido</h2>
+          <p class="card-desc">Testa la console da sistemista eseguendo i comandi tramite i pulsanti rapidi:</p>
+
+          <div class="terminal-container">
+            <div class="terminal-head">
+              <span class="t-btn-dot dot-close"></span>
+              <span class="t-btn-dot dot-min"></span>
+              <span class="t-btn-dot dot-max"></span>
+              <span class="t-host">sameer@support-workstation:~</span>
+            </div>
+            <div class="terminal-display" id="term-display">
+              <div class="t-prompt-line">
+                <span class="t-user">sameer@support:~$</span>
+                <span>whoami</span>
+              </div>
+              <p class="t-log">Sameer Khan — Junior IT Help Desk & ServiceNow Trainee (Latina / Roma)</p>
+              
+              <div class="t-prompt-line">
+                <span class="t-user">sameer@support:~$</span>
+                <span>check-system-status</span>
+              </div>
+              <p class="t-log">Stato: Attivo · Helpdesk L1/L2 · Flow Designer · AD & M365 operativi</p>
+            </div>
+
+            <div class="terminal-bar">
+              <button class="t-action-btn" onclick="executeCmd('ping')">ping 192.168.1.1</button>
+              <button class="t-action-btn" onclick="executeCmd('ad')">ad-unlock-account</button>
+              <button class="t-action-btn" onclick="executeCmd('app')">verify-sn-scoped-app</button>
+              <button class="t-action-btn" onclick="executeCmd('clear')">clear</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="tags-container">
+          <span class="tag-item tag-active">Bash Simulator</span>
+          <span class="tag-item">PowerShell Ready</span>
+          <span class="tag-item">Network Commands</span>
+        </div>
+      </section>
+
+      <!-- BLOCCO 6: LINGUE & MOBILITÀ (COL-5) -->
+      <section class="bento-card col-5">
+        <div>
+          <span class="badge-neon">Comunicazione & Flessibilità</span>
+          <h2 class="card-title">Lingue & Mobilità Territoriale</h2>
+          <p class="card-desc">Profilo multilingue ideale per team di supporto sia locali che a contatto con utenti internazionali:</p>
+
+          <div class="languages-grid">
+            <div class="lang-item">
+              <div class="lang-name">Italiano</div>
+              <div class="lang-level">Madrelingua</div>
+            </div>
+            <div class="lang-item">
+              <div class="lang-name">Inglese</div>
+              <div class="lang-level">Fluente (B2/C1)</div>
+            </div>
+            <div class="lang-item">
+              <div class="lang-name">Hindi</div>
+              <div class="lang-level">Madrelingua (Orale)</div>
+            </div>
+            <div class="lang-item">
+              <div class="lang-name">Punjabi</div>
+              <div class="lang-level">Madrelingua (Orale)</div>
+            </div>
+          </div>
+
+          <div class="mobility-note">
+            🚗 <strong>Patente B:</strong> Massima disponibilità a spostamenti giornalieri su <strong>Roma e provincia</strong> (anche con mezzi pubblici / treno).
+          </div>
+        </div>
+
+        <div class="tags-container">
+          <span class="tag-item tag-active">Multilingue</span>
+          <span class="tag-item">Team Player</span>
+          <span class="tag-item">Customer Support</span>
+        </div>
+      </section>
+
+    </main>
 
     <!-- FOOTER -->
     <footer>
-      <p>© 2026 Sameer Khan — Portfolio ospitato su GitHub Pages (khansameer.me)</p>
+      <p>© 2026 Sameer Khan — Portfolio personale ospitato su GitHub Pages (khansameer.me)</p>
+      <div>
+        <a href="https://github.com/sameerkhan-work/sameerkhan-work.github.io" target="_blank" rel="noopener noreferrer">Visualizza Repository Sorgente ↗</a>
+      </div>
     </footer>
 
   </div>
 
-  <!-- TOAST NOTIFICA COPIA -->
-  <div id="toast">Indirizzo email copiato negli appunti!</div>
+  <!-- TOAST DI CONFERMA COPIA EMAIL -->
+  <div id="toast-msg">
+    <svg style="width:16px;height:16px;fill:currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+    <span>Email copiata negli appunti!</span>
+  </div>
 
   <script>
-    function copyEmail() {
+    // 1. GESTIONE COPIA EMAIL CON FEEDBACK TOAST
+    function copyContactEmail() {
       const email = 'sameerkhan.work26@gmail.com';
       navigator.clipboard.writeText(email).then(() => {
-        const toast = document.getElementById('toast');
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 2400);
+        const toast = document.getElementById('toast-msg');
+        toast.classList.add('visible');
+        setTimeout(() => toast.classList.remove('visible'), 2600);
+      }).catch(err => {
+        console.error('Errore durante la copia:', err);
       });
     }
 
-    function filterCategory(cat) {
-      const tabs = document.querySelectorAll('.filter-tab');
-      tabs.forEach(t => t.classList.remove('active'));
-      event.target.classList.add('active');
-
-      const cards = document.querySelectorAll('.card-category');
-      cards.forEach(card => {
-        if (cat === 'all') {
-          card.style.display = 'flex';
-        } else {
-          const cardCat = card.getAttribute('data-cat');
-          if (cardCat === cat || cardCat === 'all') {
-            card.style.display = 'flex';
-          } else {
-            card.style.display = 'none';
-          }
-        }
-      });
-    }
-
+    // 2. SIMULATORE TERMINALE INTERATTIVO
     function executeCmd(type) {
-      const scr = document.getElementById('term-screen');
-      let out = '';
+      const screen = document.getElementById('term-display');
+      let html = '';
 
       if (type === 'ping') {
-        out = `<p><span class="t-prompt">sameer@helpdesk:~$</span> ping -c 3 192.168.1.1</p>
-               <p class="t-output">Reply from 192.168.1.1: bytes=32 time=2ms TTL=64<br>Packet loss: 0% — Connettività gateway LAN verificata.</p>`;
+        html = `
+          <div class="t-prompt-line"><span class="t-user">sameer@support:~$</span><span>ping -c 3 192.168.1.1</span></div>
+          <p class="t-log">PING 192.168.1.1 (192.168.1.1) 56(84) bytes of data.<br>64 bytes from 192.168.1.1: icmp_seq=1 ttl=64 time=1.84 ms<br>64 bytes from 192.168.1.1: icmp_seq=2 ttl=64 time=1.42 ms<br>0% packet loss — Connettività gateway LAN verificata.</p>
+        `;
       } else if (type === 'ad') {
-        out = `<p><span class="t-prompt">sameer@helpdesk:~$</span> Unlock-ADAccount -Identity "m.rossi"</p>
-               <p class="t-output">Stato account: Sbloccato con successo | Flag 'Password must change at next logon' impostato.</p>`;
+        html = `
+          <div class="t-prompt-line"><span class="t-user">sameer@support:~$</span><span>Unlock-ADAccount -Identity "m.rossi"</span></div>
+          <p class="t-log">Account "m.rossi" verificato.<br>Stato: Sbloccato con successo | Flag 'Change password at next logon' impostato.</p>
+        `;
       } else if (type === 'app') {
-        out = `<p><span class="t-prompt">sameer@helpdesk:~$</span> sn-verify --app "IT Provisioning"</p>
-               <p class="t-output">Scoped App attiva: Flow Designer Triggered | UI Policy: Priority (Read-Only) | Update Set esportato in XML.</p>`;
+        html = `
+          <div class="t-prompt-line"><span class="t-user">sameer@support:~$</span><span>sn-audit --app "IT Provisioning"</span></div>
+          <p class="t-log">App: Scoped Application (App Engine Studio)<br>Trigger: Flow Designer attivo | UI Policy: Priority (Read-Only) [OK]<br>Update Set esportato in XML e versionato su GitHub.</p>
+        `;
       } else if (type === 'clear') {
-        scr.innerHTML = '<p><span class="t-prompt">sameer@helpdesk:~$</span> Console di diagnostica reimpostata.</p>';
+        screen.innerHTML = `
+          <div class="t-prompt-line"><span class="t-user">sameer@support:~$</span><span>console reimpostata</span></div>
+          <p class="t-log">Terminale pronto per nuovi comandi di diagnostica.</p>
+        `;
         return;
       }
 
-      scr.innerHTML += out;
-      scr.scrollTop = scr.scrollHeight;
+      screen.innerHTML += html;
+      screen.scrollTop = screen.scrollHeight;
     }
+
+    // 3. CANVAS CYBER MESH ANIMATO & INTERATTIVO
+    (function initCanvasParticles() {
+      const canvas = document.getElementById('ambient-canvas');
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      let particles = [];
+      let mouse = { x: null, y: null, radius: 140 };
+
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+
+      window.addEventListener('mousemove', (e) => {
+        mouse.x = e.x;
+        mouse.y = e.y;
+      });
+
+      window.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+      });
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          this.size = Math.random() * 2 + 1;
+          this.vx = (Math.random() - 0.5) * 0.45;
+          this.vy = (Math.random() - 0.5) * 0.45;
+        }
+
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+
+          if (this.x < 0) this.x = width;
+          if (this.x > width) this.x = 0;
+          if (this.y < 0) this.y = height;
+          if (this.y > height) this.y = 0;
+
+          // Reazione al passaggio del mouse
+          if (mouse.x != null) {
+            const dx = mouse.x - this.x;
+            const dy = mouse.y - this.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < mouse.radius) {
+              const force = (mouse.radius - dist) / mouse.radius;
+              this.x -= (dx / dist) * force * 1.5;
+              this.y -= (dy / dist) * force * 1.5;
+            }
+          }
+        }
+
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(56, 189, 248, 0.4)';
+          ctx.fill();
+        }
+      }
+
+      // Densità particelle proporzionata alla larghezza dello schermo
+      const count = Math.floor(window.innerWidth / 28);
+      for (let i = 0; i < count; i++) {
+        particles.push(new Particle());
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        for (let i = 0; i < particles.length; i++) {
+          particles[i].update();
+          particles[i].draw();
+
+          // Connessione con linee neon soffuse tra nodi vicini
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 110) {
+              const opacity = (1 - dist / 110) * 0.18;
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(56, 189, 248, ${opacity})`;
+              ctx.lineWidth = 0.8;
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    })();
   </script>
 </body>
 </html>
+```
